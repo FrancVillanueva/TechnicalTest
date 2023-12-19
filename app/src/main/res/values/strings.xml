@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TechnicalTest</string>
+    <string name="base_url">https://api.datos.gob.mx/v1/gobmx.facts/</string>
+</resources>
