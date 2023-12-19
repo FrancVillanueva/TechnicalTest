@@ -1,6 +1,9 @@
 package com.example.technicaltest.ui.view
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,6 +11,7 @@ import com.example.technicaltest.ui.viewmodel.GobMxViewModel
 import com.example.technicaltest.databinding.FragmentMainBinding
 import com.example.technicaltest.ui.view.adapter.FactsAdapter
 import androidx.appcompat.widget.SearchView
+import com.example.technicaltest.ui.MainActivity
 
 class MainFragment : Fragment() {
 
@@ -18,12 +22,23 @@ class MainFragment : Fragment() {
         (requireActivity() as MainActivity)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        _binding = FragmentMainBinding.inflate(layoutInflater)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        return _binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         observeViewModel()
+        setupSearch()
+    }
 
+    private fun setupSearch() {
         _binding.searchByName.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -48,10 +63,11 @@ class MainFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.apiResponse.observe(this) { apiResponse ->
+        viewModel.apiResponse.observe(viewLifecycleOwner) { apiResponse ->
             apiResponse?.let {
                 adapter.setData(it.results)
             }
         }
     }
 }
+

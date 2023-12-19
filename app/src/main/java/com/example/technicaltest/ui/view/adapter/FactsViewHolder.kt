@@ -12,5 +12,6 @@ class FactsViewHolder(view:View):RecyclerView.ViewHolder(view) {
     fun bind(result: Result) {
         _binding.tvId.text = result._id
         _binding.tvName.text = result.fact
+        _binding.tvOrg.text = result.operations
     }
 }

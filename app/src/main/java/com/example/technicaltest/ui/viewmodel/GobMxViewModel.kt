@@ -22,7 +22,7 @@ class GobMxViewModel : ViewModel() {
 
     fun getFilteredResults(query: String): List<Result> {
         return apiResponse.value?.results?.filter { result ->
-            result.fact.contains(query, true) || result._id.contains(query, true)
+            result.organization.contains(query, true)
         } ?: emptyList()
     }
 }

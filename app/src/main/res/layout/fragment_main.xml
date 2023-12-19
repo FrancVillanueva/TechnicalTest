@@ -31,7 +31,7 @@
                 android:id="@+id/searchByName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:queryHint="Introduzca un nombre o ID"
+                app:queryHint="@string/typeOrg"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>

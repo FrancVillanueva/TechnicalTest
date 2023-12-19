@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">TechnicalTest</string>
     <string name="base_url">https://api.datos.gob.mx/v1/gobmx.facts/</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_input">Correo electrónico</string>
+    <string name="password_input">Contraseña</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="typeOrg">Buscar por Organizacion</string>
 </resources>
